@@ -1,9 +1,16 @@
 #!/usr/bin/python3
-"""Defines HBnB console."""
+"""Defines the HBnB console."""
 import cmd
 import re
 from shlex import split
 from models import storage
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 
 
 def parse(arg):
@@ -25,10 +32,10 @@ def parse(arg):
 
 
 class HBNBCommand(cmd.Cmd):
-    """Defines command interpreter.
+    """Defines the HolbertonBnB command interpreter.
 
     Attributes:
-        prompt (str): command prompt.
+        prompt (str): The command prompt.
     """
 
     prompt = "(hbnb) "
@@ -68,11 +75,11 @@ class HBNBCommand(cmd.Cmd):
         return False
 
     def do_quit(self, arg):
-        """Quit command to exit program."""
+        """Quit command to exit the program."""
         return True
 
     def do_EOF(self, arg):
-        """EOF signal to exit program."""
+        """EOF signal to exit the program."""
         print("")
         return True
 
@@ -91,7 +98,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """Usage: show <class> <id> or <class>.show(<id>)
-        Display string representation of a class instance of a given id.
+        Display the string representation of a class instance of a given id.
         """
         argl = parse(arg)
         objdict = storage.all()
@@ -141,7 +148,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_count(self, arg):
         """Usage: count <class> or <class>.count()
-        Retrieve number of instances of a given class."""
+        Retrieve the number of instances of a given class."""
         argl = parse(arg)
         count = 0
         for obj in storage.all().values():
