@@ -109,8 +109,8 @@ class TestBaseModel(unittest.TestCase):
         """Test public instance method to_dict()."""
 
         b = BaseModel()
-        b.name = "Moses"
-        b.age = 26
+        b.name = "Laura"
+        b.age = 23
         d = b.to_dict()
         self.assertEqual(d["id"], b.id)
         self.assertEqual(d["__class__"], type(b).__name__)
